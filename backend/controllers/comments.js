@@ -48,8 +48,7 @@ exports.getComments = async (req, res) => {
 	}
 };
 
-// future projet
-
+// Amelioration du projet
 exports.deleteComment = async (req, res) => {
 	try {
 		const commentFound = await models.Comment.findOne({
@@ -76,5 +75,4 @@ exports.deleteComment = async (req, res) => {
 		res.status(400).json({ error: error.message });
 	}
 };
-//METTRE À JOUR LE PROJET POUR L’AVENIR
-exports.answerComment = async (req, es) => {};
+

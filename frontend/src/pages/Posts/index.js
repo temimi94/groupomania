@@ -60,7 +60,6 @@ const Post = () => {
 		addPost(formData)
 			.then((response) => {
 				handlePosts();
-				handleAlert(" success ", " poste publié avec succès ");
 			})
 			.catch((error) => handleAlert('danger', error.response.data.error));
 	};

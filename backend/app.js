@@ -13,9 +13,9 @@ const path = require('path');
 if (process.env.NODE_ENV !== 'production') {
 	require('dotenv').config();
 }
-/*CROSS ORIGIN RESOURCE SHARING */
+// Middleware pour les headers de requêtes et éviter les erreurs CORS 
 app.use((req, res, next) => {
-	res.setHeader('Access-Control-Allow-Origin', '*'); //l'origine qui a le droit d'accéder à notre api = tout le monde
+	res.setHeader('Access-Control-Allow-Origin', '*'); 
 	res.setHeader(
 		'Access-Control-Allow-Headers',
 		'Origin, X-Requested-with, Content, Accept, Content-Type, Authorization',
@@ -28,10 +28,14 @@ app.use((req, res, next) => {
 });
 
 /* BODY PARSER */
-app.use(bodyParser.json()); //.json est une méthode de l'objet bodyParser qui va transformer le corps des requêtes en objets JSON
+app.use(bodyParser.json()); // va transformer le corps des requêtes en objets JSON
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
 /* HELMET */
 app.use(helmet());
+
+
 /*MULTER*/
 app.use('/images', express.static(path.join(__dirname, 'images')));
 

@@ -29,7 +29,6 @@ exports.createPost = async (req, res) => {
 			attachment: attachmentURL,
 			UserId: req.user.id,
 			isModerate: 0,
-			likes: req.body.likes,
 		});
 
 		if (!newPost) {
@@ -167,6 +166,7 @@ exports.deletePost = async (req, res) => {
 	}
 };
 
+//AMELIORATION DU PROJET
 exports.updatePost = async (req, res) => {
 	try {
 		const attachmentURL = `${req.protocol}://${req.get('host')}/images/${

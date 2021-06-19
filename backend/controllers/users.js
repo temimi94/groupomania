@@ -10,7 +10,6 @@ exports.signup = async (req, res) => {
 
 	const email_regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	const password_regex = /^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/;
-	const username_regex = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/;
 
 	// On cherche l'utilisateur dans la bdd
 
@@ -28,9 +27,6 @@ exports.signup = async (req, res) => {
 				"-Au moins 8 caractères - Inclure au moins 1 lettre minuscule - 1 lettre majuscule - 1 chiffre - 1 caractère spécial = !@#$%^&*"
 			);
 		}
-	/* 	if (username_regex.test(username)) {
-			throw new Error("max 20 caractères");
-		 } */
 		
 		const oldUser = await models.User.findOne({
 			attributes: ["email"],
@@ -152,7 +148,8 @@ exports.deleteProfile = async (req, res) => {
 	}
 };
 
-exports.updateProfile = async (req, res) => {
+//AMELIORATION DU PROJET
+ exports.updateProfile = async (req, res) => {
 	try {
 		const userToFind = await models.User.findOne({
 			attributes: ["role", "id", "isAdmin", "username"],
@@ -189,3 +186,4 @@ exports.updateProfile = async (req, res) => {
 		res.status(400).json({ error: error.message });
 	}
 };
+ 
