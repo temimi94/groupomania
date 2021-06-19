@@ -7,7 +7,7 @@ P7 Openclassrooms
 
 3) Dans le dossier backend => config => config.json mettez-y votre username et votre mot de passe pour la base de donnée development
 
-4) créer localement la base de donnée « groupomania_development »
+4) créer localement la base de donnée « groupomania_creation »
 
 5) Dans l'invite de commande déplacez vous dans le dossier backend : cd backend , tapez sequelize db:create , puis sequelize db:migrate , (assurez vous que sequelize-cli est bien installé)
 
