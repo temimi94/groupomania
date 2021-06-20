@@ -22,6 +22,7 @@ const Post = () => {
 		attachment: '',
 	});
 
+	//récupération de toutes les posts 
 	const handlePosts = () => {
 		getPosts()
 			.then((response) => {
@@ -30,18 +31,22 @@ const Post = () => {
 			.catch((error) => handleAlert('danger', error.response.data.error));
 	};
 
+	//déclencher la fonction de manière asynchrone lorsque l'état du composant change
 	useEffect(() => {
 		if (!posts) {
 			handlePosts();
 		}
 	}, [posts]);
 
+	
 	useEffect(() => {
 		if (newPost.title !== '' && newPost.content !== '' && newPost.attachment) {
 			setActive(true);
 		}
 	}, [newPost]);
 
+
+	//Récupération des toutes les publications d'un utilisateur
 	const handlePostsByUserId = (UserId) => {
 		getPost(UserId)
 			.then((response) => {
@@ -50,6 +55,8 @@ const Post = () => {
 			.catch((error) => handleAlert('danger', error.response.data.error));
 	};
 
+
+	//envoyer la publication
 	const submitHandler = (e) => {
 		e.preventDefault();
 		const formData = new FormData();
@@ -63,7 +70,10 @@ const Post = () => {
 			})
 			.catch((error) => handleAlert('danger', error.response.data.error));
 	};
+	
+    
 	const handlePost = (e) => {
+		// acceder o target 
 		if (e.target.name !== 'attachment') {
 			setNewPost({ ...newPost, [e.target.name]: e.target.value });
 		} else {
@@ -73,7 +83,6 @@ const Post = () => {
 			});
 		}
 	};
-	//console.log(newPost);
 
 	//supprimer
 	const handleDeletePost = (id) => {

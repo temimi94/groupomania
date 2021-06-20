@@ -13,6 +13,7 @@ import { handleProfile } from "./api/users";
 const dotenv = require("dotenv");
 dotenv.config();
 
+//vérification du Token
 const isMyTokenValid = () => {
 	if (localStorage.getItem("token")) {
 		const decodedToken = jwt_decode(localStorage.getItem("token"));
@@ -26,6 +27,7 @@ const isMyTokenValid = () => {
 	}
 };
 
+//gérer les routes
 const PrivateRoute = ({ component: Component, path }) => {
 	return (
 		<Route
@@ -38,6 +40,7 @@ const PrivateRoute = ({ component: Component, path }) => {
 	);
 };
 
+//gérer les alertes
 const App = () => {
 	const [profile, setProfile] = useState(null);
 	const [alert, setAlert] = useState(null);
@@ -49,6 +52,7 @@ const App = () => {
 		}, 3000);
 	};
 
+	//a voir 
 	useEffect(() => {
 		if (!profile && isMyTokenValid()) {
 			handleProfile()
@@ -59,6 +63,7 @@ const App = () => {
 		}
 	}, [profile]);
 
+	//les routes
 	return (
 		<Router>
 			<div className="App">
